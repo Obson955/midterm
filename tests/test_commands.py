@@ -67,7 +67,14 @@ def test_menu_command(capfd):
 5. divide - Divide two numbers
 6. menu - Show this menu
 7. exit - Exit the application
-8. goodbye - Say goodbye"""
+8. goodbye - Say goodbye
+
+History Management Commands:
+9. history - View calculation history
+10. save_history - Save calculation history to a file
+11. load_history - Load calculation history from a file
+12. clear_history - Clear calculation history
+13. delete_history - Delete history file"""
 
     assert out.strip() == expected_output.strip(), "The MenuCommand should print the correct menu"
 

@@ -1,15 +1,17 @@
 from decimal import Decimal
-from typing import Callable
-from calculator.calculations import Calculations
 from calculator.calculation import Calculation
+from calculator.calculations import Calculations
 from calculator.operations import add, subtract, multiply, divide
+from calculator.history import HistoryManager
 
 class Calculator:
     @staticmethod
-    def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
+    def _perform_operation(a: Decimal, b: Decimal, operation) -> Decimal:
         """Perform a calculation and add it to history."""
         calculation = Calculation.create(a, b, operation)
         Calculations.add_calculation(calculation)
+        # Also add to pandas-based history manager
+        HistoryManager.add_calculation(calculation)
         return calculation.perform()
 
     @staticmethod
