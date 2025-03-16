@@ -20,3 +20,8 @@
 2025-03-16 14:23:06 - calculator.history.manager - WARNING - History file not found for deletion: calculation_history.csv
 2025-03-16 14:23:36 - calculator.history.manager - WARNING - History file not found for deletion: calculation_history.csv
 2025-03-16 14:24:17 - calculator.history.manager - INFO - History file deleted: data/calculation_history.csv
+2025-03-16 14:28:40 - root - INFO - Logging configured with level=INFO, destination=file
+2025-03-16 14:28:40 - root - INFO - Log file location: logs/calculator.log
+2025-03-16 14:30:08 - root - INFO - Logging configured with level=INFO, destination=file
+2025-03-16 14:30:08 - root - INFO - Log file location: logs/calculator.log
+2025-03-16 14:30:10 - matplotlib.font_manager - INFO - generated new fontManager
