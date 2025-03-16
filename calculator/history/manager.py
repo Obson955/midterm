@@ -3,12 +3,17 @@
 import os
 import pandas as pd
 import numpy as np
+import pathlib
 from datetime import datetime
 from decimal import Decimal
 from typing import List, Optional, Dict, Any, Callable, Union, Tuple
 from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply, divide
 from calculator.logging_config import get_logger
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Get module logger
 logger = get_logger(__name__)
@@ -17,7 +22,13 @@ class HistoryManager:
     """Manages calculation history using pandas DataFrame."""
     
     _history_df = pd.DataFrame(columns=['timestamp', 'a', 'b', 'operation', 'result'])
-    _default_file_path = os.path.join(os.getcwd(), 'calculation_history.csv')
+    # Set default file path to data directory from environment variable
+    _data_dir = pathlib.Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))).joinpath(
+        os.environ.get('CALCULATOR_DATA_DIR', 'data')
+    )
+    _default_file_path = str(_data_dir.joinpath(
+        os.environ.get('CALCULATOR_HISTORY_FILE', 'calculation_history.csv')
+    ))
     _instance = None  # For singleton pattern
     
     # Operation name to function mapping
@@ -32,7 +43,9 @@ class HistoryManager:
         """Implement singleton pattern."""
         if cls._instance is None:
             cls._instance = super(HistoryManager, cls).__new__(cls)
-            logger.info("HistoryManager singleton instance created")
+            # Ensure data directory exists
+            cls._data_dir.mkdir(exist_ok=True)
+            logger.info(f"HistoryManager singleton instance created, using data directory: {cls._data_dir}")
         return cls._instance
     
     @classmethod
@@ -87,6 +100,8 @@ class HistoryManager:
         """
         path = file_path or cls._default_file_path
         try:
+            # Ensure parent directory exists
+            os.makedirs(os.path.dirname(path), exist_ok=True)
             cls._history_df.to_csv(path, index=False)
             logger.info(f"Calculation history saved to {path}")
             return path

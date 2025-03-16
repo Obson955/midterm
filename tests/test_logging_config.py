@@ -4,6 +4,7 @@ import os
 import logging
 import pytest
 import pathlib
+from unittest.mock import patch
 from calculator.logging_config import LoggingConfig, get_logger
 
 
@@ -45,12 +46,9 @@ def test_singleton_pattern():
     assert instance1 is instance2
 
 
+@patch.dict(os.environ, {"CALCULATOR_LOG_LEVEL": ""}, clear=True)
 def test_default_log_level(reset_logging):
     """Test default log level is INFO."""
-    # Remove environment variable if it exists
-    if 'CALCULATOR_LOG_LEVEL' in os.environ:
-        del os.environ['CALCULATOR_LOG_LEVEL']
-    
     # Create a new instance
     LoggingConfig()
     
@@ -58,11 +56,9 @@ def test_default_log_level(reset_logging):
     assert logging.getLogger().level == logging.INFO
 
 
+@patch.dict(os.environ, {"CALCULATOR_LOG_LEVEL": "DEBUG"}, clear=True)
 def test_custom_log_level(reset_logging):
     """Test setting custom log level."""
-    # Set environment variable
-    os.environ['CALCULATOR_LOG_LEVEL'] = 'DEBUG'
-    
     # Create a new instance
     LoggingConfig()
     
@@ -70,12 +66,9 @@ def test_custom_log_level(reset_logging):
     assert logging.getLogger().level == logging.DEBUG
 
 
+@patch.dict(os.environ, {"CALCULATOR_LOG_DEST": ""}, clear=True)
 def test_default_log_destination(reset_logging):
     """Test default log destination is file."""
-    # Remove environment variable if it exists
-    if 'CALCULATOR_LOG_DEST' in os.environ:
-        del os.environ['CALCULATOR_LOG_DEST']
-    
     # Create a new instance
     LoggingConfig()
     
@@ -85,11 +78,9 @@ def test_default_log_destination(reset_logging):
     assert isinstance(root_logger.handlers[0], logging.FileHandler)
 
 
+@patch.dict(os.environ, {"CALCULATOR_LOG_DEST": "console"}, clear=True)
 def test_console_log_destination(reset_logging):
     """Test console log destination."""
-    # Set environment variable
-    os.environ['CALCULATOR_LOG_DEST'] = 'console'
-    
     # Create a new instance
     LoggingConfig()
     
@@ -99,12 +90,13 @@ def test_console_log_destination(reset_logging):
     assert isinstance(root_logger.handlers[0], logging.StreamHandler)
 
 
+@patch.dict(os.environ, {
+    "CALCULATOR_LOG_DEST": "file",
+    "CALCULATOR_LOG_FILE": "test_log.log"
+}, clear=True)
 def test_file_log_destination(reset_logging):
     """Test file log destination."""
-    # Set environment variables
-    os.environ['CALCULATOR_LOG_DEST'] = 'file'
-    test_log_file = 'test_log.log'
-    os.environ['CALCULATOR_LOG_FILE'] = test_log_file
+    test_log_file = "test_log.log"
     
     try:
         # Create a new instance
@@ -130,14 +122,15 @@ def test_file_log_destination(reset_logging):
             os.remove(test_log_file)
 
 
+@patch.dict(os.environ, {
+    "CALCULATOR_LOG_DEST": "rotating_file",
+    "CALCULATOR_LOG_FILE": "test_rotating_log.log",
+    "CALCULATOR_LOG_MAX_BYTES": "1024",
+    "CALCULATOR_LOG_BACKUP_COUNT": "3"
+}, clear=True)
 def test_rotating_file_log_destination(reset_logging):
     """Test rotating file log destination."""
-    # Set environment variables
-    os.environ['CALCULATOR_LOG_DEST'] = 'rotating_file'
-    test_log_file = 'test_rotating_log.log'
-    os.environ['CALCULATOR_LOG_FILE'] = test_log_file
-    os.environ['CALCULATOR_LOG_MAX_BYTES'] = '1024'  # 1KB
-    os.environ['CALCULATOR_LOG_BACKUP_COUNT'] = '3'
+    test_log_file = "test_rotating_log.log"
     
     try:
         # Create a new instance

@@ -5,6 +5,10 @@ import logging
 import logging.handlers
 from typing import Dict, Any
 import pathlib
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 class LoggingConfig:
     """Singleton class for configuring and managing application logging."""
