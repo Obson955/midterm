@@ -4,3 +4,19 @@
 2025-03-16 13:46:26 - root - INFO - Log file location: /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/logs/calculator.log
 2025-03-16 13:46:26 - root - INFO - Logging configured with level=INFO, destination=file
 2025-03-16 13:46:26 - root - INFO - Log file location: /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/logs/calculator.log
+2025-03-16 14:20:52 - root - INFO - Logging configured with level=INFO, destination=file
+2025-03-16 14:20:52 - root - INFO - Log file location: logs/calculator.log
+2025-03-16 14:20:52 - __main__ - INFO - Application started with arguments: []
+2025-03-16 14:20:52 - __main__ - INFO - No arguments provided, defaulting to interactive mode
+2025-03-16 14:20:57 - calculator.history.manager - INFO - Added calculation to history: 1 add 1 = 2
+2025-03-16 14:21:23 - root - INFO - Logging configured with level=INFO, destination=file
+2025-03-16 14:21:23 - root - INFO - Log file location: logs/calculator.log
+2025-03-16 14:21:23 - __main__ - INFO - Application started with arguments: []
+2025-03-16 14:21:23 - __main__ - INFO - No arguments provided, defaulting to interactive mode
+2025-03-16 14:21:37 - calculator.history.manager - INFO - Added calculation to history: 1 add 1 = 2
+2025-03-16 14:21:46 - calculator.history.manager - INFO - Calculation history saved to /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/data/calculation_history.csv
+2025-03-16 14:22:26 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-16 14:22:41 - calculator.history.manager - INFO - Calculation history loaded from /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/data/calculation_history.csv
+2025-03-16 14:23:06 - calculator.history.manager - WARNING - History file not found for deletion: calculation_history.csv
+2025-03-16 14:23:36 - calculator.history.manager - WARNING - History file not found for deletion: calculation_history.csv
+2025-03-16 14:24:17 - calculator.history.manager - INFO - History file deleted: data/calculation_history.csv
