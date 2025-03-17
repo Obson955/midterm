@@ -4,3 +4,126 @@
 2025-03-16 13:46:26 - root - INFO - Log file location: /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/logs/calculator.log
 2025-03-16 13:46:26 - root - INFO - Logging configured with level=INFO, destination=file
 2025-03-16 13:46:26 - root - INFO - Log file location: /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/logs/calculator.log
+2025-03-17 15:31:46 - root - INFO - Logging configured with level=INFO, destination=file
+2025-03-17 15:31:46 - root - INFO - Log file location: logs/calculator.log
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 2 add 2 = 4
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 2 subtract 2 = 0
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 2 divide 2 = 1.0
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 2 multiply 2 = 4
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 add 5 = 15
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 multiply 5 = 50
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 divide 5 = 2
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 1 add 2 = 3
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 5 subtract 3 = 2
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 2 = 8
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 5 add 10 = 15
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 5 multiply 10 = 50
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 divide 5 = 2
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 5 add 10 = 15
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:46 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - ERROR - Error saving history to test_save_history.csv: [Errno 2] No such file or directory: ''
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - ERROR - Error saving history to test_load_history.csv: [Errno 2] No such file or directory: ''
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - WARNING - History file not found: nonexistent_file.csv
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - ERROR - Error saving history to test_delete_history.csv: [Errno 2] No such file or directory: ''
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 4 = 6
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 3 multiply 6 = 18
+2025-03-17 15:31:47 - calculator.history.manager - ERROR - Error saving history to test_delete_cancel.csv: [Errno 2] No such file or directory: ''
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - WARNING - History file not found for deletion: nonexistent_file.csv
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - ERROR - Error saving history to test_save_load_history.csv: [Errno 2] No such file or directory: ''
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - WARNING - History file not found: nonexistent_file.csv
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - ERROR - Error saving history to test_delete_file.csv: [Errno 2] No such file or directory: ''
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - WARNING - History file not found for deletion: nonexistent_file.csv
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 5 add 2 = 7
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 10 subtract 5 = 5
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Added calculation to history: 4 multiply 3 = 12
+2025-03-17 15:31:47 - calculator.history.manager - INFO - Calculation history cleared
+2025-03-17 15:31:47 - root - INFO - Logging configured with level=DEBUG, destination=file
+2025-03-17 15:31:47 - root - INFO - Log file location: /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/logs/calculator.log
