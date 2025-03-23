@@ -16,33 +16,33 @@ class StatisticsCommand(Command):
                 logger.info("Statistics command executed but no history was available")
                 return
             
-            print("\n===== Calculation Statistics =====")
+            print("\n===== Statistics for Calculation History =====")
             
             # Overall statistics
             print("\nOverall Statistics:")
             overall = stats.get('overall', {})
             print(f"  Total calculations: {overall.get('count', 0)}")
-            print(f"  Average result: {overall.get('mean_result', 0):.4f}")
-            print(f"  Minimum result: {overall.get('min_result', 0):.4f}")
-            print(f"  Maximum result: {overall.get('max_result', 0):.4f}")
-            print(f"  Standard deviation: {overall.get('std_result', 0):.4f}")
+            print(f"  Average result: {overall.get('mean', 0):.4f}")
+            print(f"  Minimum result: {overall.get('min', 0):.4f}")
+            print(f"  Maximum result: {overall.get('max', 0):.4f}")
+            print(f"  Standard deviation: {overall.get('std', 0):.4f}")
             
             # Statistics by operation
             print("\nStatistics by Operation:")
             for op_name, op_stats in stats.items():
                 if op_name != 'overall':
-                    print(f"\n  {op_name.capitalize()}:")
+                    print(f"\n  {op_name}:")
                     print(f"    Count: {op_stats.get('count', 0)}")
-                    print(f"    Average result: {op_stats.get('mean_result', 0):.4f}")
-                    print(f"    Minimum result: {op_stats.get('min_result', 0):.4f}")
-                    print(f"    Maximum result: {op_stats.get('max_result', 0):.4f}")
-                    print(f"    Standard deviation: {op_stats.get('std_result', 0):.4f}")
+                    print(f"    Average result: {op_stats.get('mean', 0):.4f}")
+                    print(f"    Minimum result: {op_stats.get('min', 0):.4f}")
+                    print(f"    Maximum result: {op_stats.get('max', 0):.4f}")
+                    print(f"    Standard deviation: {op_stats.get('std', 0):.4f}")
             
-            # Operation frequency
-            print("\nOperation Frequency:")
-            freq = history_manager.get_operation_frequency()
-            for op, count in freq.items():
-                print(f"  {op.capitalize()}: {count}")
+            # Operation Breakdown
+            print("\nOperation Breakdown:")
+            for op_name, op_stats in stats.items():
+                if op_name != 'overall':
+                    print(f"  {op_name}: {op_stats.get('count', 0)}")
                 
             logger.info("Statistics command executed successfully")
         except Exception as e:

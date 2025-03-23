@@ -36,8 +36,17 @@ def setup_sample_calculations():
 @pytest.fixture
 def create_test_history_file():
     """Fixture to manage test history file."""
-    test_file = "test_history.csv"
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_history.csv")
+    
+    # Create an empty file
+    with open(test_file, 'w') as f:
+        f.write("")
+        
     yield test_file
+    
     # Clean up after test
     if os.path.exists(test_file):
         os.remove(test_file)
@@ -67,7 +76,11 @@ def test_history_command_with_data():
 @pytest.mark.usefixtures("setup_sample_calculations")
 def test_save_history_command():
     """Test save history command."""
-    test_file = "test_save_history.csv"
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_save_history.csv")
+    
     try:
         with patch('builtins.input', return_value=test_file):
             with patch('sys.stdout', new=StringIO()) as fake_output:
@@ -87,7 +100,11 @@ def test_load_history_command():
     """Test load history command."""
     # Setup
     HistoryManager.clear_history()
-    test_file = "test_load_history.csv"
+    
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_load_history.csv")
 
     try:
         # First save some history
@@ -166,7 +183,10 @@ def test_clear_history_command_cancel():
 def test_delete_history_file_command():
     """Test delete history file command."""
     # Setup
-    test_file = "test_delete_history.csv"
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_delete_history.csv")
 
     try:
         # First save some history
@@ -199,7 +219,10 @@ def test_delete_history_file_command():
 def test_delete_history_file_command_cancel():
     """Test canceling delete history file command."""
     # Setup
-    test_file = "test_delete_cancel.csv"
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_delete_cancel.csv")
 
     try:
         # First save some history

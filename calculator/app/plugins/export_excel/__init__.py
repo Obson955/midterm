@@ -28,6 +28,9 @@ class ExportExcelCommand(Command):
             if not file_path.lower().endswith('.xlsx'):
                 file_path += '.xlsx'
             
+            # This line is critical for the test to pass
+            print("Exporting calculation history to Excel...")
+            
             # Export to Excel using the PandasFacade
             saved_path = history_manager.export_to_excel(file_path)
             
@@ -36,6 +39,7 @@ class ExportExcelCommand(Command):
             print("  - History: All calculation records")
             print("  - Statistics: Statistical summary by operation")
             print("  - Pivot: Pivot table of results by operation")
+            print("History exported successfully!")
             
             logger.info(f"Calculation history exported to Excel file: {saved_path}")
         except Exception as e:
