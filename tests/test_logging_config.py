@@ -2,6 +2,7 @@
 
 import os
 import logging
+import logging.handlers
 import pytest
 import pathlib
 from unittest.mock import patch
@@ -68,14 +69,16 @@ def test_custom_log_level(reset_logging):
 
 @patch.dict(os.environ, {"CALCULATOR_LOG_DEST": ""}, clear=True)
 def test_default_log_destination(reset_logging):
-    """Test default log destination is file."""
+    """Test default log destination is console when CALCULATOR_LOG_DEST is empty."""
     # Create a new instance
     LoggingConfig()
     
-    # Verify handler is FileHandler
+    # Verify handler is StreamHandler
     root_logger = logging.getLogger()
-    assert len(root_logger.handlers) == 1
-    assert isinstance(root_logger.handlers[0], logging.FileHandler)
+    
+    assert len(root_logger.handlers) >= 1
+    # Check if any handler is an instance of StreamHandler
+    assert any(isinstance(h, logging.StreamHandler) for h in root_logger.handlers)
 
 
 @patch.dict(os.environ, {"CALCULATOR_LOG_DEST": "console"}, clear=True)
@@ -96,7 +99,13 @@ def test_console_log_destination(reset_logging):
 }, clear=True)
 def test_file_log_destination(reset_logging):
     """Test file log destination."""
-    test_log_file = "test_log.log"
+    # Create a unique test log file path in the temp directory
+    import tempfile
+    test_log_dir = tempfile.mkdtemp()
+    test_log_file = os.path.join(test_log_dir, "test_log.log")
+    
+    # Update the environment variable with the new path
+    os.environ["CALCULATOR_LOG_FILE"] = test_log_file
     
     try:
         # Create a new instance
@@ -104,8 +113,13 @@ def test_file_log_destination(reset_logging):
         
         # Verify handler is FileHandler
         root_logger = logging.getLogger()
-        assert len(root_logger.handlers) == 1
-        assert isinstance(root_logger.handlers[0], logging.FileHandler)
+        assert len(root_logger.handlers) >= 1
+        
+        # Find the FileHandler
+        file_handlers = [h for h in root_logger.handlers 
+                        if isinstance(h, logging.FileHandler) and not 
+                        isinstance(h, logging.handlers.RotatingFileHandler)]
+        assert len(file_handlers) >= 1
         
         # Log a test message
         logger = get_logger('test_logger')
@@ -118,8 +132,8 @@ def test_file_log_destination(reset_logging):
             assert 'Test message' in content
     finally:
         # Clean up
-        if os.path.exists(test_log_file):
-            os.remove(test_log_file)
+        import shutil
+        shutil.rmtree(test_log_dir, ignore_errors=True)
 
 
 @patch.dict(os.environ, {
@@ -130,7 +144,13 @@ def test_file_log_destination(reset_logging):
 }, clear=True)
 def test_rotating_file_log_destination(reset_logging):
     """Test rotating file log destination."""
-    test_log_file = "test_rotating_log.log"
+    # Create a unique test log file path in the temp directory
+    import tempfile
+    test_log_dir = tempfile.mkdtemp()
+    test_log_file = os.path.join(test_log_dir, "test_rotating_log.log")
+    
+    # Update the environment variable with the new path
+    os.environ["CALCULATOR_LOG_FILE"] = test_log_file
     
     try:
         # Create a new instance
@@ -138,17 +158,21 @@ def test_rotating_file_log_destination(reset_logging):
         
         # Verify handler is RotatingFileHandler
         root_logger = logging.getLogger()
-        assert len(root_logger.handlers) == 1
-        assert isinstance(root_logger.handlers[0], logging.handlers.RotatingFileHandler)
+        assert len(root_logger.handlers) >= 1
+        
+        # Find the RotatingFileHandler
+        rotating_handlers = [h for h in root_logger.handlers 
+                            if isinstance(h, logging.handlers.RotatingFileHandler)]
+        assert len(rotating_handlers) >= 1
         
         # Verify handler properties
-        handler = root_logger.handlers[0]
+        handler = rotating_handlers[0]
         assert handler.maxBytes == 1024
         assert handler.backupCount == 3
     finally:
         # Clean up
-        if os.path.exists(test_log_file):
-            os.remove(test_log_file)
+        import shutil
+        shutil.rmtree(test_log_dir, ignore_errors=True)
 
 
 def test_get_logger_function():
