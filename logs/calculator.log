@@ -10758,3 +10758,9 @@ pandas._libs.tslibs.parsing.DateParseError: Unknown datetime string format, unab
 2025-03-22 22:23:18 - calculator.history.manager - INFO - Calculation history cleared
 2025-03-22 22:23:18 - root - INFO - Logging configured with level=DEBUG, destination=file
 2025-03-22 22:23:18 - root - INFO - Log file location: /home/osaintfleur/MITAS2025/SP25-IS601/projects/midterm/logs/calculator.log
+2025-03-22 23:04:10 - root - INFO - Logging configured with level=INFO, destination=file
+2025-03-22 23:04:10 - root - INFO - Log file location: logs/calculator.log
+2025-03-22 23:04:10 - __main__ - INFO - Application started with arguments: []
+2025-03-22 23:04:10 - __main__ - INFO - No arguments provided, defaulting to interactive mode
+2025-03-22 23:04:10 - calculator.app.plugins.menu - INFO - Menu command executed
+2025-03-22 23:04:15 - calculator.history.manager - INFO - Added calculation to history: 1 add 1 = 2
