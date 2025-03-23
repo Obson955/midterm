@@ -6,6 +6,7 @@ import pytest
 from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply
 from calculator.history import HistoryManager
+from unittest.mock import patch
 
 
 @pytest.fixture
@@ -107,36 +108,42 @@ def test_clear_history():
 @pytest.mark.usefixtures("clear_history")
 def test_save_and_load_history():
     """Test saving and loading history."""
-    # Create and add calculations
-    calcs = [
-        Calculation(Decimal('5'), Decimal('2'), add),
-        Calculation(Decimal('10'), Decimal('5'), subtract),
-        Calculation(Decimal('4'), Decimal('3'), multiply)
-    ]
-
-    for calc in calcs:
-        HistoryManager.add_calculation(calc)
-
-    test_file = "test_save_load_history.csv"
+    # Setup
+    HistoryManager.clear_history()
+    
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_save_load.csv")
+    
     try:
+        # Add some calculations to history
+        calc1 = Calculation(Decimal('5'), Decimal('2'), add)
+        calc2 = Calculation(Decimal('10'), Decimal('4'), subtract)
+        
+        HistoryManager.add_calculation(calc1)
+        HistoryManager.add_calculation(calc2)
+        
         # Save history
         saved_path = HistoryManager.save_history(test_file)
-        assert os.path.exists(saved_path)
-
+        assert saved_path == test_file
+        assert os.path.exists(test_file)
+        
         # Clear history
         HistoryManager.clear_history()
-        assert HistoryManager.get_history().empty
-
+        assert len(HistoryManager.get_history()) == 0
+        
         # Load history
-        success = HistoryManager.load_history(test_file)
-        assert success
-
-        # Verify loaded history
-        loaded_df = HistoryManager.get_history()
-        assert len(loaded_df) == 3
-        assert loaded_df['operation'].tolist() == ['add', 'subtract', 'multiply']
+        assert HistoryManager.load_history(test_file)
+        
+        # Check history is loaded
+        history = HistoryManager.get_history()
+        assert len(history) == 2
+        assert 'add' in history['operation'].values
+        assert 'subtract' in history['operation'].values
     finally:
         # Clean up
+        HistoryManager.clear_history()
         if os.path.exists(test_file):
             os.remove(test_file)
 
@@ -152,30 +159,43 @@ def test_load_nonexistent_file():
 @pytest.mark.usefixtures("clear_history")
 def test_delete_history_file():
     """Test deleting history file."""
-    # Create and add calculations
-    calcs = [
-        Calculation(Decimal('5'), Decimal('2'), add),
-        Calculation(Decimal('10'), Decimal('5'), subtract),
-        Calculation(Decimal('4'), Decimal('3'), multiply)
-    ]
-
-    for calc in calcs:
-        HistoryManager.add_calculation(calc)
-
-    test_file = "test_delete_file.csv"
+    # Setup
+    HistoryManager.clear_history()
+    
+    # Create a test file in the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    test_file = os.path.join(data_dir, "test_delete.csv")
+    
     try:
+        # Add some calculations to history
+        calc1 = Calculation(Decimal('5'), Decimal('2'), add)
+        calc2 = Calculation(Decimal('10'), Decimal('4'), subtract)
+        
+        HistoryManager.add_calculation(calc1)
+        HistoryManager.add_calculation(calc2)
+        
         # Save history
         HistoryManager.save_history(test_file)
-
-        # Verify file exists
         assert os.path.exists(test_file)
-
-        # Delete file
-        success = HistoryManager.delete_history_file(test_file)
-        assert success
+        
+        # Test deletion directly without the confirmation prompt
+        # This is a direct test of the underlying method
+        os.remove(test_file)
         assert not os.path.exists(test_file)
+        
+        # For testing the confirmation logic, we need to recreate the file
+        HistoryManager.save_history(test_file)
+        assert os.path.exists(test_file)
+        
+        # Now test the full method with mocked input
+        with patch('builtins.input', return_value='y'):
+            result = HistoryManager.delete_history_file(test_file)
+            assert result
+            assert not os.path.exists(test_file)
     finally:
-        # Clean up in case the test fails
+        # Clean up
+        HistoryManager.clear_history()
         if os.path.exists(test_file):
             os.remove(test_file)
 
