@@ -1,5 +1,10 @@
 # Project Install Instructions
 
+## Calculator Demo
+
+[Watch the demo video here](https://youtu.be/39hkv91oYQg)
+
+
 ## Projects Setup
 1. Clone the repository.
 2. CD into the project folder.
